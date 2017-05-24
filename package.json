@@ -1,0 +1,13 @@
+{
+  "name": "clickapp",
+  "version": "0.0.1",
+  "description": "point and click to move",
+  "dependencies": {
+    "express": "^4.15.2",
+    "socket.io": "^1.7.4",
+    "aws-sdk": "latest"
+  },
+  "scripts": {
+    "start": "node app.js"
+  }
+}
