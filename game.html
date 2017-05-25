@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href='game.css'>
     <link rel="stylesheet" type="text/css" href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
@@ -11,6 +12,15 @@
         var socket = io();
         socket.emit('joined', 1);
         socket.on('joined', function(val) {
+            var xSpot = (Math.random() * 500) + 50;
+            var ySpot = (Math.random() * 500) + 50;
+            jQuery('<div/>', {
+                class: 'player',
+                id: val
+            }).appendTo($("#main_body"));
+            var theBlock = $('#' + val);
+            theBlock.css("top", ySpot);
+            theBlock.css("left", xSpot);
             var pBox = $('#counter');
             var playerString = 'Total Players: ';
             pBox.text(playerString + val.toString());
@@ -18,6 +28,8 @@
     });
 </script>
 <body>
-    <p id="counter">Total Players: 0</p>
+    <div id='main_body'>
+        <p id="counter"></p>
+    </div>
 </body>
 </html>
